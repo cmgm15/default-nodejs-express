@@ -1,0 +1,23 @@
+{
+  "name": "default-nodejs-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmgm15/default-nodejs-express.git"
+  },
+  "author": "Carlos Gómez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmgm15/default-nodejs-express/issues"
+  },
+  "homepage": "https://github.com/cmgm15/default-nodejs-express#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
