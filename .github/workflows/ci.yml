@@ -9,4 +9,4 @@ jobs:
         id: pr
         run: echo $(gh pr view --json number -q .number || echo "")
         env:
-          GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
