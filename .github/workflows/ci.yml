@@ -1,0 +1,12 @@
+name: CI
+on: [push]
+jobs:
+  lighthouseci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Pull Request Number
+        id: pr
+        run: echo $(gh pr view --json number -q .number || echo "")
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
