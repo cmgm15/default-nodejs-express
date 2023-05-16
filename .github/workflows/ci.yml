@@ -8,7 +8,6 @@ jobs:
       - name: Get Pull Request Number
         id: pr
         run: |
-          export LHCI_GITHUB_APP_TOKEN="${{ secrets.TEST_GITHUB_TOKEN }}"
           echo "PR_NUMBER=$(gh pr view --json number -q .number || echo "")" >>$GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
