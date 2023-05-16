@@ -9,7 +9,7 @@ jobs:
         id: pr
         run: |
           export LHCI_GITHUB_APP_TOKEN="${{ secrets.TEST_GITHUB_TOKEN }}"
-          echo "echo PR_NUMBER=$(gh pr view --json number -q .number || echo "")" >>$GITHUB_OUTPUT
+          echo "PR_NUMBER=$(gh pr view --json number -q .number || echo "")" >>$GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
       - name: Comment on PR
