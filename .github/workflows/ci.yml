@@ -1,0 +1,20 @@
+name: CI
+on: [push]
+jobs:
+  lighthouseci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Pull Request Number
+        id: pr
+        run: |
+          echo "PR_NUMBER=$(gh pr view --json number -q .number || echo "")" >>$GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ steps.pr.outputs.PR_NUMBER }}
+          GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
+          message: |
+            PR ${{ steps.pr.outputs.PR_NUMBER }}
