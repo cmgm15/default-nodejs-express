@@ -9,6 +9,13 @@ jobs:
         id: pr
         run: |
           export LHCI_GITHUB_APP_TOKEN="${{ secrets.TEST_GITHUB_TOKEN }}"
-          echo $(gh pr view --json number -q .number || echo "")
+          echo "echo PR_NUMBER=$(gh pr view --json number -q .number || echo "")" >>$GITHUB_OUTPUT
         env:
-          GITHUB_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
+      - name: Comment on PR
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          number: ${{ steps.pr.outputs.PR_NUMBER }}
+          GITHUB_TOKEN: ${{ secrets.TEST_GITHUB_TOKEN }}
+          message: |
+            PR ${{ steps.pr.outputs.PR_NUMBER }}
